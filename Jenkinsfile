@@ -1,30 +1,26 @@
 pipeline {
-    agent {
-        docker {
-            image 'node:18'
-        }
-    }
+    agent any
 
     stages {
-        stage('Clone repository') {
+        stage('Clone') {
             steps {
                 git 'https://github.com/ShaikhSiddiqNitJ/CICDREACT.git'
             }
         }
 
-        stage('Install dependencies') {
+        stage('Install') {
             steps {
                 sh 'npm install'
             }
         }
 
-        stage('Build the React app') {
+        stage('Build') {
             steps {
                 sh 'npm run build'
             }
         }
 
-        stage('Start the React app') {
+        stage('Start') {
             steps {
                 sh 'nohup npm start &'
             }
