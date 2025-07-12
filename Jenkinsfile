@@ -1,13 +1,11 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'node:18'  // Node.js & npm pre-installed
+        }
+    }
 
     stages {
-        stage('Clone') {
-            steps {
-                git 'https://github.com/ShaikhSiddiqNitJ/CICDREACT.git'
-            }
-        }
-
         stage('Install') {
             steps {
                 sh 'npm install'
